@@ -1,0 +1,121 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "运行当前 Python 文件",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "01 多臂老虎机",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.01_bandit",
+            "args": ["--steps", "2000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "02 价值迭代",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.02_value_iteration",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "03 Q-learning",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.03_td_control",
+            "args": ["--algo", "q_learning", "--episodes", "1000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "03 SARSA",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.03_td_control",
+            "args": ["--algo", "sarsa", "--episodes", "1000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "04 DQN",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.04_dqn",
+            "args": ["--algo", "dqn", "--steps", "60000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "04 Double DQN",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.04_dqn",
+            "args": ["--algo", "double_dqn", "--steps", "60000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "05 REINFORCE",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.05_policy_gradient",
+            "args": ["--algo", "reinforce", "--episodes", "1000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "05 Actor-Critic",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.05_policy_gradient",
+            "args": ["--algo", "actor_critic", "--episodes", "1000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "06 PPO",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.06_ppo",
+            "args": ["--steps", "100000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "07 DDPG",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.07_continuous",
+            "args": ["--algo", "ddpg", "--steps", "60000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "07 TD3",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.07_continuous",
+            "args": ["--algo", "td3", "--steps", "60000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "07 SAC",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "lessons.07_continuous",
+            "args": ["--algo", "sac", "--steps", "60000", "--seed", "0"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}

@@ -18,6 +18,8 @@ python -m venv .venv
 
 之后的文档用 `python` 简写该环境解释器。Linux/macOS 使用 `.venv/bin/python`。如果你使用 Conda，可创建 Python 3.10 环境后安装相同 requirements。课程固定使用 CPU，首次实验无需 CUDA、MuJoCo、Atari ROM 或图形窗口。
 
+依赖安装同时以 editable 模式安装本项目的 `rlstudy` 公共模块。完成后支持直接运行 `lessons` 中的文件，VS Code 操作见 [点击运行指南](08_vscode.md)。本机现有 `.venv` 已完成该安装，换电脑或重新创建环境时需要重新安装 requirements。
+
 依赖固定顶层版本。完整环境快照见 [本地验证版本](environment_windows_py39.txt)。改变 Python 或平台后应重新运行检查，不把版本固定理解为跨平台结果完全一致。
 
 ## Gymnasium 接口

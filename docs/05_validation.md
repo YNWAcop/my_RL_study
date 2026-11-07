@@ -28,3 +28,7 @@ SAC 使用固定温度，PPO 采用单环境简化实现。全部运行产物放
 ## 同步状态
 
 Git 通过现有本地代理成功连接 origin，确认初始远端没有提交。课程首建提交 `333a680` 已成功推送至 `codex/rl-learning-path`，可从 [远端课程入口](https://github.com/YNWAcop/my_RL_study/tree/codex/rl-learning-path) 阅读。由于本地没有配置提交者，首建提交使用 `Codex <codex@local.invalid>` 标识自动整理，后续学习提交可使用仓库所有者自己的 Git 署名。
+
+## VS Code 运行方式更新
+
+2026-11-07 增加项目打包配置，在当前 `.venv` 中完成 editable 安装。已从 `lessons` 目录直接启动 `01_bandit.py` 跑通实验，验证直接文件运行能够导入 `rlstudy`。VS Code 配置包含当前文件入口和 12 个算法入口，已检查配置 JSON 及各入口参数。实际 VS Code 按钮交互由使用者按操作指南启动。原有 5 项数学检查再次通过，`pip check` 无依赖冲突。
