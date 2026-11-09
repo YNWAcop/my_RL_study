@@ -1,5 +1,7 @@
 # VS Code 点击运行
 
+“运行和调试”菜单新增了“学习步骤 · 快速运行”和“学习步骤 · 正式实验”。选择后会弹出 00–21 的编号与名称，可按 [22 步手册](10_step_by_step.md) 依次推进。
+
 ## 打开项目
 
 在 VS Code 中选择“文件 → 打开文件夹”，打开整个 `RL` 文件夹。当前机器路径为 `E:\UserData\Documents\ChatGPT\RL`。安装 Microsoft 的 Python 扩展及 Python Debugger 扩展，工作区会推荐这两个扩展。

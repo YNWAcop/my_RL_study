@@ -1,5 +1,27 @@
 # 参考仓库与源码阅读地图
 
+**本机已准备的阅读源码**
+
+2026-11-09 已将四份源码放入 external/，与本地 22 步课程分开管理。锁定版本与内容摘要见 [source_manifest.json](source_manifest.json)。
+
+| 来源 | 本地目录 | 固定版本 |
+|---|---|---|
+| boyu-ai/Hands-on-RL | `external/handson` | `4a151a4bfeafd3061c0e0ef59bece25ca8fb2bf8` |
+| vwxyzjn/cleanrl | `external/cleanrl` | `1.2.0` |
+| DLR-RM/stable-baselines3 | `external/sb3` | `9555dd9859025561db12f331fc33be279b023a0a` |
+| zcaicaros/L2D | `external/l2d` | `7b2efbb1ffc960260b16952f2bed68e500765bf0` |
+
+CleanRL 使用官方 PyPI 1.2.0 源码发行包，包含 DQN/PPO/DDPG/TD3/SAC 等算法文件和 LICENSE。该源码的校验值来自 PyPI 发行记录，阅读时可与 projects/Code_1_minimal 中已经适配当前环境的 PPO 对照。其他三份来自 GitHub，使用提交号与文件树摘要核对版本。SB3 选用与现有 Python 3.9 环境兼容的 2.4.1，包和对应源码都已准备。
+
+上游源码保留原目录与授权文件，供公式和实现对照。执行课程时使用 lessons/ 和 projects/ 的入口。L2D 的旧版依赖及业务建模需要在进入论文复现阶段时专门适配。SB3 的 .dockerignore 符号链接在 Windows 阅读副本中保存为 .gitignore 内容的常规文件。
+
+external/ 由 Git 忽略，仓库同步后可以按固定清单恢复。
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 -m scripts.fetch_sources
+```
+
+
 ## 阅读范围与课程取舍
 
 2026-11-07 查阅项目 README、目录、相关章节、依赖以及主线算法的目标计算与更新循环。这里记录与课程有关的重点阅读范围，属于定向源码导读，不声称逐文件审计整个上游项目。网页内容来自当次可读取版本，链接指向上游默认分支，后续可能变化。
@@ -52,4 +74,4 @@
 
 ## 来源与授权
 
-本仓库说明与代码为新写教学内容，使用上述材料定位概念、核对算法和阅读入口。当前未整包复制上游源码或 Notebook，也未将其他项目的许可证套用为本仓库许可证。若以后复制或改编具体文件，应保留原版权声明、对应 LICENSE，并在文件中标注来源与修改。Hands-on-RL 页面内容和仓库代码的授权应分别核对。本仓库的整体发布许可证由仓库所有者决定。
+lessons/ 中的课程代码为本地教学实现。external/ 保存固定版本的上游源码与原有授权文件，projects/ 保存用户提供的项目材料。改编上游具体文件时，应保留版权声明、对应 LICENSE，并标注来源和修改。Hands-on-RL 网页文字与仓库代码的授权分别核对，本仓库的整体发布许可证由仓库所有者决定。

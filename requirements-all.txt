@@ -21,3 +21,6 @@ protobuf==3.20.0
 moviepy==1.0.3
 wandb==0.16.6
 setproctitle==1.3.7
+
+# Mature baseline used after the hand-written algorithms.
+stable-baselines3==2.4.1

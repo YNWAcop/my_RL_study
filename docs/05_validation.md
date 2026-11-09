@@ -1,5 +1,10 @@
 # 验证记录
 
+**2026-11-09 学习路线准备**
+
+新增数组/张量/环境/GAE 练习、随机游走 MC/TD(0)、SB3 基线、六工序调度与 GIN 前向示例，并将课程组织为 00–21 共 22 步。统一入口 scripts.study 的全步骤快速检查通过。数学、调度资源约束、奖励累加、GIN 掩码与梯度等共 9 项测试通过。完整预算的算法学习效果由后续多随机种子实验检验。上游源码版本见 source_manifest.json，逐步阅读和实验说明见 [22 步手册](10_step_by_step.md)。
+
+
 **2026-11-09 统一环境更新**
 
 已将两份导入项目整合到现有 .venv。当前 NumPy 为 1.23.5，补装 PaddlePaddle、PARL、旧 Gym、tyro、TensorBoard、pandas、录像及追踪依赖，并配置 Windows 下的框架加载顺序。现有 5 项测试、21 组运行检查、课程自检、PPO 录像和 TensorBoard 本地服务均通过。课程 DDPG 的探索动作已转换为环境要求的 float32，并增加相应冒烟检查。详细步骤和验证预算见 [统一环境指南](09_unified_environment.md)，当前完整软件包记录见 [环境快照](environment_windows_py39.txt)。

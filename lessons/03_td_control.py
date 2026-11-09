@@ -24,7 +24,11 @@ def main():
     cli = parser(__doc__)
     cli.add_argument("--algo", choices=["q_learning", "sarsa"], default="q_learning")
     cli.add_argument("--episodes", type=positive_int, default=1000)
+    cli.add_argument("--epsilon", type=float, default=0.1)
+    cli.add_argument("--learning-rate", type=float, default=0.5)
     args = cli.parse_args()
+    if not 0 <= args.epsilon <= 1 or not 0 < args.learning_rate <= 1:
+        cli.error("epsilon 必须在 [0,1] 内，learning-rate 必须在 (0,1] 内")
     env = gym.make("CliffWalking-v0", max_episode_steps=1000)
     rng = np.random.default_rng(args.seed)
     q = np.zeros((env.observation_space.n, env.action_space.n))
@@ -33,15 +37,15 @@ def main():
     try:
         for episode in range(args.episodes):
             state, _ = env.reset(seed=args.seed + episode)
-            action = epsilon_action(q, state, rng, 0.1)
+            action = epsilon_action(q, state, rng, args.epsilon)
             episode_return = 0.0
             done = False
             length = 0
             while not done:
                 next_state, reward, terminated, truncated, _ = env.step(action)
-                next_action = epsilon_action(q, next_state, rng, 0.1)
+                next_action = epsilon_action(q, next_state, rng, args.epsilon)
                 target = td_target(reward, q[next_state], next_action, terminated, 1.0, args.algo)
-                q[state, action] += 0.5 * (target - q[state, action])
+                q[state, action] += args.learning_rate * (target - q[state, action])
                 state, action = next_state, next_action
                 episode_return += reward
                 length += 1

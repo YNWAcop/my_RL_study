@@ -80,8 +80,9 @@ PARL 2.2.1 的依赖约束包括 cloudpickle 1.6.0、TensorBoard 不高于 2.11.
 | tyro / TensorBoard | 0.9.35 / 2.11.0 |
 | cloudpickle / protobuf | 1.6.0 / 3.20.0 |
 | MoviePy / wandb | 1.0.3 / 0.16.6 |
+| Stable-Baselines3 | 2.4.1 |
 
-完整的 108 项已安装软件包记录见 [环境快照](environment_windows_py39.txt)。2026-11-09 的验证结果如下。
+完整的 109 项已安装软件包记录见 [环境快照](environment_windows_py39.txt)。2026-11-09 的验证结果如下。
 
 - pip check 通过，现有数学与终止边界测试 5 项通过。
 - Code_2/check_env.py 全部通过，smoke_lessons.py 六组课程检查全部通过。
@@ -94,3 +95,5 @@ PARL 2.2.1 的依赖约束包括 cloudpickle 1.6.0、TensorBoard 不高于 2.11.
 真实环境检查还发现课程 DDPG 的探索动作在加入 NumPy 噪声后变成 float64，被环境的 float32 动作空间拒绝。已在 [DDPG Agent](../projects/Code_2/lesson5/ddpg/agent.py) 中将探索动作转换为 float32，并在课程冒烟检查中加入真实动作执行。该修复使原训练入口能够继续采样和更新。
 
 本次验证使用 CPU 和短训练预算，回报数值用于确认代码执行及学习更新。完整实验的收敛效果应按课程或研究项目要求增加预算和随机种子。
+
+2026-11-09 为第 19 步补装 Stable-Baselines3 2.4.1。该版本复用当前环境的 PyTorch 2.5.1、Gymnasium 1.0.0 和 NumPy 1.23.5。学习目录的 22 步快速检查与 9 项测试已通过，手册见 [22 步学习](10_step_by_step.md)。

@@ -7,7 +7,10 @@ from rlstudy.common import Run, parser, positive_int
 def main():
     cli = parser(__doc__)
     cli.add_argument("--steps", type=positive_int, default=2000)
+    cli.add_argument("--epsilon", type=float, default=0.1)
     args = cli.parse_args()
+    if not 0 <= args.epsilon <= 1:
+        cli.error("epsilon 必须在 [0,1] 内")
     probabilities = np.array([0.1, 0.3, 0.5, 0.7, 0.8])
     # 两种策略使用同一潜在奖励表，减少比较时的奖励噪声差异。
     rewards = np.random.default_rng(args.seed).random((args.steps, 5)) < probabilities
@@ -25,7 +28,7 @@ def main():
                     else:
                         bonus = np.sqrt(2 * np.log(step + 1) / counts)
                         action = int(np.argmax(estimates + bonus))
-                elif rng.random() < 0.1:
+                elif rng.random() < args.epsilon:
                     action = int(rng.integers(5))
                 else:
                     best = np.flatnonzero(estimates == estimates.max())

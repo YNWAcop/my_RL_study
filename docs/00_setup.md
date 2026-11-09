@@ -6,7 +6,7 @@
 
 ## 独立环境
 
-教学依赖以 Python 3.9–3.12 为目标，当前机器验证版本写入验证记录。所有命令均在仓库根目录执行。Windows PowerShell 可直接使用虚拟环境中的解释器，无需修改脚本执行策略。
+当前完整学习环境使用 Windows / Python 3.9.12，包含两份导入项目的配置见 [统一环境指南](09_unified_environment.md)。以下是主学习代码的基本安装方式，创建 .venv 时使用 Python 3.9。所有命令均在仓库根目录执行，PowerShell 可直接调用解释器。
 
 ```powershell
 python -m venv .venv
@@ -16,7 +16,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m pytest -q
 ```
 
-之后的文档用 `python` 简写该环境解释器。Linux/macOS 使用 `.venv/bin/python`。如果你使用 Conda，可创建 Python 3.10 环境后安装相同 requirements。课程固定使用 CPU，首次实验无需 CUDA、MuJoCo、Atari ROM 或图形窗口。
+之后的文档用 `python` 简写该环境解释器。其他平台运行主学习代码时使用其虚拟环境解释器并重新验证依赖。当前课程采用 CPU、低维状态与小网络，两个导入项目和 SB3 的完整安装清单在 requirements-all.txt。
 
 依赖安装同时以 editable 模式安装本项目的 `rlstudy` 公共模块。完成后支持直接运行 `lessons` 中的文件，VS Code 操作见 [点击运行指南](08_vscode.md)。本机现有 `.venv` 已完成该安装，换电脑或重新创建环境时需要重新安装 requirements。
 
@@ -33,6 +33,8 @@ episode_finished = terminated or truncated
 `terminated` 表示任务的终止状态，TD 目标在此屏蔽未来价值。`truncated` 在课程环境中通常来自外部时间上限，回合需要重置，但 TD 估计保留最后状态的自举项。先存储 `next_observation`，再调用 `reset()`。GAE 还要在两种回合边界切断递推。参见 [Gymnasium Env API](https://gymnasium.farama.org/api/env/)。
 
 Hands-on-RL README 推荐的是旧 Gym，Spinning Up 的 setup.py 固定了旧 Gym、TensorFlow 1 和 PyTorch。课程将它们作为阅读材料，本地实验统一使用 requirements 中的 Gymnasium 和 PyTorch。参见 [Hands-on-RL README](https://github.com/boyu-ai/Hands-on-RL)、[Spinning Up 依赖](https://github.com/openai/spinningup/blob/master/setup.py)。
+
+projects/Code_2 保留 Gym 与 Paddle/PARL 的课程接口，用于第 15 步对照分层实现；两套接口已在当前 .venv 中共存验证。
 
 ## 输出
 

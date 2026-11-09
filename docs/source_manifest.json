@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "handson",
+      "repository": "boyu-ai/Hands-on-RL",
+      "kind": "github",
+      "requested_ref": "main",
+      "revision": "4a151a4bfeafd3061c0e0ef59bece25ca8fb2bf8",
+      "url": "https://codeload.github.com/boyu-ai/Hands-on-RL/zip/4a151a4bfeafd3061c0e0ef59bece25ca8fb2bf8",
+      "archive": "handson.zip",
+      "archive_sha256": "16a23f49762b534fb0978279a62dc7009e7dc533ff80fdb5c43f841942f5334d",
+      "tree_sha256": "cc350653247f4b635875f3e77fe29dce9d467ad15d31f09e47d31af844522cdd",
+      "directory": "external/handson"
+    },
+    {
+      "id": "cleanrl",
+      "repository": "vwxyzjn/cleanrl",
+      "kind": "pypi",
+      "requested_ref": "PyPI 1.2.0",
+      "revision": "1.2.0",
+      "url": "https://files.pythonhosted.org/packages/a7/09/c3d996cad4ba1032976fd5c98837f5c3243f89beaa0fb79f24c51ef5d0ea/cleanrl-1.2.0.tar.gz",
+      "archive": "cleanrl.tar.gz",
+      "archive_sha256": "22c43c71f06da02ade7bb2e90c4820548696d3816d15f4cf0dcb266cf7671f72",
+      "tree_sha256": "457faecc69d7c5658c8821407cb54359b666fa51aa2e1da9543bb010d88eaea1",
+      "directory": "external/cleanrl"
+    },
+    {
+      "id": "sb3",
+      "repository": "DLR-RM/stable-baselines3",
+      "kind": "github",
+      "requested_ref": "v2.4.1",
+      "revision": "9555dd9859025561db12f331fc33be279b023a0a",
+      "url": "https://codeload.github.com/DLR-RM/stable-baselines3/zip/9555dd9859025561db12f331fc33be279b023a0a",
+      "archive": "sb3.zip",
+      "archive_sha256": "a857b2b68f4da2e5e318a4abba69a198494e287b730441d97fee92f5355596ae",
+      "tree_sha256": "030a409e97f0cbe1e2f546ea014c76522c4698b3440e207c8da9f96cf4bae5d3",
+      "directory": "external/sb3"
+    },
+    {
+      "id": "l2d",
+      "repository": "zcaicaros/L2D",
+      "kind": "github",
+      "requested_ref": "main",
+      "revision": "7b2efbb1ffc960260b16952f2bed68e500765bf0",
+      "url": "https://codeload.github.com/zcaicaros/L2D/zip/7b2efbb1ffc960260b16952f2bed68e500765bf0",
+      "archive": "l2d.zip",
+      "archive_sha256": "8fafefe2a9dd353e8707a1e0a9dd6c726a11944953dc45fdbb5d87d37cd9fb42",
+      "tree_sha256": "0c34c004cdd35496bd6d160a2e8b61c839d95ea23d6a653986148fcc55d7f865",
+      "directory": "external/l2d"
+    }
+  ]
+}

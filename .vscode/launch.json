@@ -129,6 +129,71 @@
             "args": ["--algo", "sac", "--steps", "60000", "--seed", "0"],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal"
+        },
+        {
+            "name": "学习步骤 · 快速运行",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "module": "scripts.study",
+            "args": [
+                "run",
+                "${input:studyStep}",
+                "--quick"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONUTF8": "1"
+            }
+        },
+        {
+            "name": "学习步骤 · 正式实验",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "module": "scripts.study",
+            "args": [
+                "run",
+                "${input:studyStep}"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONUTF8": "1"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "studyStep",
+            "type": "pickString",
+            "description": "按 22 步手册选择学习步骤",
+            "options": [
+                "00 数组、索引与增量均值",
+                "01 张量、网络与反向传播",
+                "02 环境交互与回合边界",
+                "03 探索与利用",
+                "04 MDP 与价值迭代",
+                "05 回报、MC 与 TD(0)",
+                "06 SARSA 的实际下一动作",
+                "07 Q-learning 的贪心目标",
+                "08 DQN 的完整训练循环",
+                "09 Double DQN 的两张网络",
+                "10 REINFORCE 与轨迹回报",
+                "11 一步 Actor–Critic",
+                "12 GAE 和裁剪目标手算",
+                "13 手写 PPO 与单因素实验",
+                "14 阅读与运行 CleanRL PPO",
+                "15 对照 PARL 的分层实现",
+                "16 DDPG 的连续动作",
+                "17 TD3 的三个改动",
+                "18 SAC 的随机策略与熵",
+                "19 成熟基线与保存评估",
+                "20 把调度写成决策环境",
+                "21 GIN 与合法动作概率"
+            ],
+            "default": "00 数组、索引与增量均值"
         }
     ]
 }

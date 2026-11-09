@@ -1,5 +1,7 @@
 # 学习路线
 
+代码已按 [22 步手册](10_step_by_step.md) 配齐，统一入口为 python -m scripts.study。下面保留按周推进的安排，可与步骤编号交叉使用。
+
 这条路线按每周 6–8 小时、约 10–12 周安排。适用假设是已有基本 Python 能力，强化学习从零开始。具体时间以每阶段验收为准。顺序依据概念依赖安排，“最优”取决于基础、可用时间和应用方向。
 
 中文主线用 [Hands-on-RL](https://hrl.boyuai.com/chapter/)，基础习题用 [dennybritz](https://github.com/dennybritz/reinforcement-learning)，深度实现用 [CleanRL](https://github.com/vwxyzjn/cleanrl)，英文推导用 [Spinning Up](https://spinningup.openai.com/en/latest/)。每阶段先读相应材料，再运行本仓库代码，最后回到上游核对实现。更详细的文件入口见 [源码地图](03_sources.md)。
@@ -20,7 +22,7 @@
 
 ## 阶段 2 · MDP、动态规划和 MC · 第 2 周
 
-读 Hands-on-RL 第 3–4 章，再做 dennybritz 的 MDP、DP 和 MC 练习。定义状态、动作、转移概率、奖励、折扣和策略。手算三步奖励 `[1,2,3]`、gamma=0.9 的每个时刻回报，并写出一次访问 MC 的均值更新。
+读 Hands-on-RL 第 3–4 章，再做 dennybritz 的 MDP、DP 和 MC 练习。定义状态、动作、转移概率、奖励、折扣和策略。手算三步奖励 `[1,2,3]`、gamma=0.9 的每个时刻回报，并写出首次访问 MC 的均值更新，再运行 python -m lessons.02_mc_prediction 对照 TD(0)。
 
 运行 `python -m lessons.02_value_iteration`。在已知的确定性 FrozenLake 模型上检查价值迭代、贪心策略和贝尔曼残差。把 `is_slippery=False` 改为 `True`，重新观察转移随机性如何改变策略。
 
