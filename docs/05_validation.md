@@ -1,5 +1,9 @@
 # 验证记录
 
+**2026-11-09 统一环境更新**
+
+已将两份导入项目整合到现有 .venv。当前 NumPy 为 1.23.5，补装 PaddlePaddle、PARL、旧 Gym、tyro、TensorBoard、pandas、录像及追踪依赖，并配置 Windows 下的框架加载顺序。现有 5 项测试、21 组运行检查、课程自检、PPO 录像和 TensorBoard 本地服务均通过。课程 DDPG 的探索动作已转换为环境要求的 float32，并增加相应冒烟检查。详细步骤和验证预算见 [统一环境指南](09_unified_environment.md)，当前完整软件包记录见 [环境快照](environment_windows_py39.txt)。
+
 验证日期为 2026-11-07，系统为 Windows，解释器为 Python 3.9.12。依赖使用仓库独立 `.venv`。
 
 ## 已完成

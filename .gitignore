@@ -16,3 +16,6 @@ projects/**/*.pt
 projects/**/*.pth
 projects/**/*.ckpt
 projects/**/events.out.tfevents.*
+
+# PARL writes this file in the process working directory.
+parl_debug.log

@@ -1,0 +1,23 @@
+# Unified Windows / Python 3.9 environment for lessons/ and both imported projects.
+# Install pip==23.3.1 setuptools==65.5.0 wheel==0.38.4 before installing this file.
+-r requirements-dev.txt
+
+# PPO command line, event logs, and figure data.
+tyro==0.9.35
+tensorboard==2.11.0
+pandas==2.2.3
+
+# Original PARL course and its legacy Gym API.
+paddlepaddle==2.6.2
+parl==2.2.1
+gym==0.21.0
+pyglet==1.5.27
+pygame==2.6.1
+scipy==1.13.1
+cloudpickle==1.6.0
+protobuf==3.20.0
+
+# PPO's optional video recording and experiment tracking imports.
+moviepy==1.0.3
+wandb==0.16.6
+setproctitle==1.3.7

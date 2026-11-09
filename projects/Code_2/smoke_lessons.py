@@ -125,6 +125,7 @@ def l5():
     alg = DDPG(model, gamma=0.99, tau=0.001, actor_lr=0.0001, critic_lr=0.001)
     agent = Agent(alg, act_dim, expl_noise=0.1)
     act = agent.sample(obs.astype("float32"))
+    env.step(act[0])
     n = 8
     c_loss, a_loss = agent.learn(
         np.random.randn(n, obs_dim).astype("float32"),

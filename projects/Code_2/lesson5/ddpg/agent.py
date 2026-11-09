@@ -35,7 +35,8 @@ class Agent(parl.Agent):
         """
         action_numpy = self.predict(obs)
         action_noise = np.random.normal(0, self.expl_noise, size=self.act_dim)
-        action = (action_numpy + action_noise).clip(-1, 1)
+        # Gym Box requires float32; NumPy's exploration noise is float64.
+        action = (action_numpy + action_noise).clip(-1, 1).astype('float32')
         return action
 
     def predict(self, obs):
