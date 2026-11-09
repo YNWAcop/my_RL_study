@@ -1,0 +1,36 @@
+# 参考代码：只放行本包保留的那个 ppo.py，其余 clone 下来的上游仓库不进 git
+/ref/*
+!/ref/cleanrl/
+/ref/cleanrl/*
+!/ref/cleanrl/cleanrl/
+/ref/cleanrl/cleanrl/*
+!/ref/cleanrl/cleanrl/ppo.py
+!/ref/cleanrl/LICENSE
+
+# 训练日志与产物
+logs/*
+!logs/S2_baseline.md
+runs/
+*.png
+!docs/img/*.png
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.csv
+!data/iris.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# 编辑器（.idea 整个忽略：iml/modules 是机器相关，提交了只会制造无意义 diff）
+.idea/
+.vscode/
+
+# 系统
+Thumbs.db
+desktop.ini

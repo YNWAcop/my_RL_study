@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.venv/
+
+# 训练产物
+output/
+model.ckpt*
+*.pdparams
+*.log
+events.out.tfevents.*

@@ -51,3 +51,5 @@ python -m scripts.plot_runs --pattern "runs/td_control/*/train.csv"
 ## 资料与验证
 
 参考项目的角色、阅读范围、授权边界见 [资料说明](docs/03_sources.md)。本地验证状态见 [验证记录](docs/05_validation.md)，远端连接情况与同步方法见 [GitHub 同步](docs/06_sync.md)。当前路线按有基本 Python 能力、首次系统学习 RL、每周约 6–8 小时安排，可根据每阶段验收结果调整进度。
+
+两份压缩包已整理到 [projects/](projects/README.md)，包含 PPO 实验材料、PARL 课程代码，以及各自的环境配置和运行方法。

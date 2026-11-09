@@ -1,0 +1,41 @@
+{
+  "imported_on": "2026-11-09",
+  "archives": [
+    {
+      "filename": "Code_1_minimal.zip",
+      "sha256": "89f3d1b70e0dfd8b476b60356757becb392270080b008327d155eaa36dbe7a2d",
+      "destination": "projects/Code_1_minimal",
+      "file_count": 27,
+      "filename_repairs": []
+    },
+    {
+      "filename": "Code_2.zip",
+      "sha256": "4555bd2f2b726ad007c27e5e9532b878a288e9885da1761c34258e25cea49c93",
+      "destination": "projects/Code_2",
+      "file_count": 45,
+      "filename_repairs": [
+        {
+          "zip_name": "Code_2/.idea/╡┌╚²╓▄╓▄▒¿.md",
+          "extracted_name": "Code_2/.idea/第三周周报.md"
+        },
+        {
+          "zip_name": "Code_2/docs_╢»╠¼═╝README.md",
+          "extracted_name": "Code_2/docs_动态图README.md"
+        },
+        {
+          "zip_name": "Code_2/docs_┐╬│╠╘¡README.md",
+          "extracted_name": "Code_2/docs_课程原README.md"
+        },
+        {
+          "zip_name": "Code_2/requirements_╢»╠¼═╝.txt",
+          "extracted_name": "Code_2/requirements_动态图.txt"
+        }
+      ]
+    }
+  ],
+  "additional_document_copy": {
+    "from": "Code_2/.idea/第三周周报.md",
+    "to": "Code_2/docs/第三周周报.md",
+    "reason": "Keep the learning report visible in Git while ignoring machine-specific IDE settings."
+  }
+}

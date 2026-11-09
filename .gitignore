@@ -6,3 +6,13 @@ runs/
 *.egg-info/
 external/
 .wheelhouse/
+
+# Imported learning projects and their separate environments
+.venv-*/
+.idea/
+projects/**/*.pdopt
+projects/**/*.pdparams
+projects/**/*.pt
+projects/**/*.pth
+projects/**/*.ckpt
+projects/**/events.out.tfevents.*
