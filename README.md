@@ -2,6 +2,11 @@
 
 用 Python、NumPy 和 PyTorch 学习强化学习。按“理解问题 → 推导目标 → 阅读实现 → 跑对照实验 → 解释结果”的顺序推进。
 
+## 实战项目
+
+- [高速公路驾驶决策](projects/highway_dqn/README.md)使用 HighwayEnv 和 DQN，在不同车流密度下与规则策略对比。
+- [作业车间排程](projects/job_shop/README.md)使用派工规则、带动作掩码的 PPO 和 CP-SAT，对比完工时间并输出甘特图。
+
 ## 从这里开始
 
 1. 阅读 [环境配置](docs/00_setup.md)，运行第一个实验。
