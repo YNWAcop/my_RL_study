@@ -85,7 +85,8 @@ def main():
             is_render = True
         else:
             is_render = False
-    # 训练结束，查看算法效果
+    # 训练结束，先保存，再查看效果
+    agent.save()
     test_episode(env, agent)
 
 

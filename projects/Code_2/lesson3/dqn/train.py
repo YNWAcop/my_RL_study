@@ -88,6 +88,7 @@ def run_evaluate_episodes(agent, env, render=False):
 def main():
     # CartPole-v0: expected reward > 180
     # MountainCar-v0 : expected reward > -120
+    #创建环境，4个状态数值，2个动作数值
     env = gym.make('CartPole-v0')
     obs_dim = env.observation_space.shape[0]  # CartPole-v0: (4,)
     act_dim = env.action_space.n  # CartPole-v0: 2
@@ -122,7 +123,7 @@ def main():
             episode += 1
 
         # test part       render=True 查看显示效果
-        eval_reward = run_evaluate_episodes(agent, env, render=False)
+        eval_reward = run_evaluate_episodes(agent, env, render=True)
         logger.info('episode:{}    e_greed:{}   Test reward:{}'.format(
             episode, agent.e_greed, eval_reward))
 

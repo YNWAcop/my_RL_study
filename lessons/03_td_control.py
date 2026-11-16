@@ -1,10 +1,10 @@
-"""在相同的 CliffWalking 上比较 SARSA 和 Q-learning。"""
+"""在相同的 悬崖行走 上比较 SARSA 和 Q-learning。"""
 import gymnasium as gym
 import numpy as np
 
 from rlstudy.common import Run, parser, positive_int
 
-
+#以ε 的概率探索，其余时候选择当前最好的动作
 def epsilon_action(q, state, rng, epsilon):
     if rng.random() < epsilon:
         return int(rng.integers(q.shape[1]))
@@ -16,21 +16,24 @@ def td_target(reward, next_values, next_action, terminated, gamma, algorithm):
     if terminated:
         return reward
     if algorithm == "sarsa":
-        return reward + gamma * next_values[next_action]
+        return reward + gamma * next_values[next_action]#计算学习目标
     return reward + gamma * next_values.max()
 
 
 def main():
+    #参数设置选取
     cli = parser(__doc__)
     cli.add_argument("--algo", choices=["q_learning", "sarsa"], default="q_learning")
     cli.add_argument("--episodes", type=positive_int, default=1000)
     cli.add_argument("--epsilon", type=float, default=0.1)
     cli.add_argument("--learning-rate", type=float, default=0.5)
     args = cli.parse_args()
+
     if not 0 <= args.epsilon <= 1 or not 0 < args.learning_rate <= 1:
         cli.error("epsilon 必须在 [0,1] 内，learning-rate 必须在 (0,1] 内")
     env = gym.make("CliffWalking-v0", max_episode_steps=1000)
     rng = np.random.default_rng(args.seed)
+    #建立状态*动作的Q表
     q = np.zeros((env.observation_space.n, env.action_space.n))
     run = Run("td_control", args, ["episode", "step", "return", "length"])
     total_steps = 0
@@ -45,7 +48,7 @@ def main():
                 next_state, reward, terminated, truncated, _ = env.step(action)
                 next_action = epsilon_action(q, next_state, rng, args.epsilon)
                 target = td_target(reward, q[next_state], next_action, terminated, 1.0, args.algo)
-                q[state, action] += args.learning_rate * (target - q[state, action])
+                q[state, action] += args.learning_rate * (target - q[state, action])  #更新学习目标
                 state, action = next_state, next_action
                 episode_return += reward
                 length += 1

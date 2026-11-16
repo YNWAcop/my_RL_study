@@ -36,13 +36,13 @@ class Agent(parl.Agent):
         """
         sample = np.random.random()  # 产生0~1之间的小数
         if sample < self.e_greed:
-            act = np.random.randint(self.act_dim)  # 探索：每个动作都有概率被选择
+            act = np.random.randint(self.act_dim)  # 探索：每个动作都有概率被选择，少部分
         else:
-            act = self.predict(obs)  # 选择最优动作
+            act = self.predict(obs)  # 选择最优动作，大部分选择当前Q值最大的动作
         self.e_greed = max(
             0.01, self.e_greed - self.e_greed_decrement)  # 随着训练逐步收敛，探索的程度慢慢降低
         return act
-
+#贪心的分支
     def predict(self, obs):
         """ 根据观测值 obs 选择最优动作
         """
@@ -54,6 +54,7 @@ class Agent(parl.Agent):
     def learn(self, obs, act, reward, next_obs, terminal):
         """ 根据训练数据更新一次模型参数
         """
+        #每update_target_steps次数同步一次目标网络
         if self.global_step % self.update_target_steps == 0:
             self.alg.sync_target()
         self.global_step += 1

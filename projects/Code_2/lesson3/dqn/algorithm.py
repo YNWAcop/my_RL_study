@@ -26,7 +26,7 @@ class DQN(parl.Algorithm):
         Args:
             model (parl.Model): 定义Q函数的前向网络结构
             gamma (float): reward的衰减因子
-            lr (float): learning_rate，学习率.
+            lr (float): learning_rate学习率.
         """
         # checks
         assert isinstance(gamma, float)
@@ -69,7 +69,7 @@ class DQN(parl.Algorithm):
             target = reward + (1 - terminal) * self.gamma * max_v
         loss = self.mse_loss(pred_value, target)
 
-        # 计算 Q(s,a) 与 target_Q的均方差，得到loss
+        # 计算 Q(s,a) 与 target_Q的均方差，得到loss，反向传播
         self.optimizer.clear_grad()
         loss.backward()
         self.optimizer.step()

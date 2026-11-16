@@ -72,3 +72,6 @@ python -m scripts.plot_runs --pattern "runs/td_control/*/train.csv"
 参考项目的角色、阅读范围、授权边界见 [资料说明](docs/03_sources.md)。本地验证状态见 [验证记录](docs/05_validation.md)，远端连接情况与同步方法见 [GitHub 同步](docs/06_sync.md)。当前路线按有基本 Python 能力、首次系统学习 RL、每周约 6–8 小时安排，可根据每阶段验收结果调整进度。
 
 两份压缩包已整理到 [projects/](projects/README.md)，包含 PPO 实验材料和 PARL 课程代码。三套代码统一使用现有 .venv，安装记录与运行命令见 [统一环境指南](docs/09_unified_environment.md)。
+
+- [Code_1_minimal](projects/Code_1_minimal/README.md) 包含 PPO 训练和实验材料。
+- [Code_2](projects/Code_2/README.md) 包含 SARSA、Q-learning、DQN 等原课程代码。训练后的模型用 [回放入口](docs/11_code2_playback.md) 加载。

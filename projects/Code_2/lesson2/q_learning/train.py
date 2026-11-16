@@ -68,7 +68,7 @@ def main():
     agent = QLearningAgent(
         obs_n=env.observation_space.n,
         act_n=env.action_space.n,
-        learning_rate=0.1,
+        learning_rate=0.05,
         gamma=0.9,
         e_greed=0.1)
 
@@ -83,7 +83,8 @@ def main():
             is_render = True
         else:
             is_render = False
-    # 训练结束，查看算法效果
+    # 训练结束，先保存，再查看效果
+    agent.save()
     test_episode(env, agent)
 
 

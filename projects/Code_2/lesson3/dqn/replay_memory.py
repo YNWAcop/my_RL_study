@@ -18,7 +18,7 @@ import random
 import collections
 import numpy as np
 
-
+#利用队列进行经验的存储，新经验加入尾部，装满后最早的经验自动出队淘汰
 class ReplayMemory(object):
     def __init__(self, max_size):
         self.buffer = collections.deque(maxlen=max_size)

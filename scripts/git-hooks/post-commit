@@ -1,0 +1,13 @@
+#!/bin/sh
+
+branch=codex/rl-learning-path
+[ "$(git symbolic-ref --quiet --short HEAD)" = "$branch" ] || exit 0
+remote_url=$(git remote get-url --push origin 2>/dev/null) || exit 0
+[ "$remote_url" = "https://github.com/YNWAcop/my_RL_study.git" ] || exit 0
+
+# Keep a failed push visible without affecting the completed local commit.
+if GIT_TERMINAL_PROMPT=0 git -c credential.interactive=false push origin "HEAD:refs/heads/$branch"; then
+    printf '%s\n' "GitHub sync complete: origin/$branch"
+else
+    printf '%s\n' "GitHub sync failed. The commit is local. Retry with: git push origin $branch" >&2
+fi

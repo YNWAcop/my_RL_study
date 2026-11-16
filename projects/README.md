@@ -92,4 +92,4 @@ git diff --cached
 git commit -m "Study DQN action selection"
 ```
 
-需要同步时执行 git push，现有远端说明见 [GitHub 同步](../docs/06_sync.md)。
+在已启用提交后钩子的工作区，提交会自动推送。新克隆如何配置见 [GitHub 同步](../docs/06_sync.md)。

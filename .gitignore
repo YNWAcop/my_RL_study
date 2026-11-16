@@ -10,12 +10,19 @@ external/
 # Imported learning projects and their separate environments
 .venv-*/
 .idea/
-projects/**/*.pdopt
-projects/**/*.pdparams
-projects/**/*.pt
-projects/**/*.pth
-projects/**/*.ckpt
 projects/**/events.out.tfevents.*
 
 # PARL writes this file in the process working directory.
 parl_debug.log
+
+# Local checkpoints, experiment data, and credentials
+*.ckpt
+*.pdparams
+*.pdopt
+*.pth
+*.pt
+*.npy
+*.zip
+.env
+.env.*
+!.env.example
