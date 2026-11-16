@@ -3,6 +3,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
+import sys
 
 import gymnasium as gym
 import highway_env  # Registers the environments.
@@ -100,7 +101,10 @@ def evaluate(args):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        epilog="Run without arguments to watch a one-episode keep-lane demo.",
+    )
     commands = parser.add_subparsers(dest="command", required=True)
     training = commands.add_parser("train")
     training.add_argument("--density", type=float, default=1.0)
@@ -114,7 +118,11 @@ def main():
     testing.add_argument("--seed", type=int, default=10_000)
     testing.add_argument("--render", action="store_true")
     testing.add_argument("--csv", type=Path)
-    args = parser.parse_args()
+    if len(sys.argv) == 1:
+        print("Highway demo: keep-lane rule, one episode.", flush=True)
+        args = parser.parse_args(["evaluate", "--densities", "1.0", "--episodes", "1", "--render"])
+    else:
+        args = parser.parse_args()
     if args.command == "train":
         if args.steps < 1 or not np.isfinite(args.density) or args.density <= 0:
             parser.error("steps and density must be positive")
@@ -122,6 +130,14 @@ def main():
     else:
         if args.episodes < 1 or any(not np.isfinite(d) or d <= 0 for d in args.densities):
             parser.error("episodes and densities must be positive")
+        if args.model is not None and not (
+            args.model.is_file() or Path(f"{args.model}.zip").is_file()
+        ):
+            parser.error(
+                f"Model file not found: {args.model.absolute()}. "
+                "Train first or point --model at an existing Highway DQN model.zip. "
+                "Omit --model to run the keep-lane rule."
+            )
         evaluate(args)
 
 

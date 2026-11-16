@@ -148,6 +148,15 @@
             }
         },
         {
+            "name": "高速公路 · 规则驾驶演示",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "module": "projects.highway_dqn.run",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "学习步骤 · 正式实验",
             "type": "debugpy",
             "request": "launch",
