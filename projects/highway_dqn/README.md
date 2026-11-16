@@ -8,6 +8,16 @@
 .\.venv\Scripts\python.exe -m projects.highway_dqn.run
 ```
 
+动画按正常时间速度播放，每局最长为 30 秒仿真时间；发生碰撞会提前结束。默认演示只运行一局，结束后窗口自动关闭，终端会输出结束原因：`time limit` 表示时间到，`collision` 表示碰撞。默认演示使用规则驾驶，没有加载 DQN 模型。
+
+想连续观看 5 局规则驾驶，可以运行：
+
+```powershell
+.\.venv\Scripts\python.exe -m projects.highway_dqn.run evaluate --densities 1.0 --episodes 5 --render
+```
+
+之前窗口约一秒就关闭，是因为未启用实时渲染，30 秒仿真被快速计算完了。现在 `--render` 会限制画面播放速度；不显示画面的训练和评估仍按计算速度运行。
+
 从仓库根目录运行以下训练和评估命令。只有环境缺少依赖时才需要执行安装命令。训练完成后才会生成评估要用的 `model.zip`。
 
 ```powershell

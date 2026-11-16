@@ -19,6 +19,8 @@ def make_env(density, render=False):
             "observation": {"type": "Kinematics"},
             "action": {"type": "DiscreteMetaAction"},
             "vehicles_density": density,
+            # Pace the viewer, while training and headless evaluation stay fast.
+            "real_time_rendering": render,
         },
     )
 
@@ -70,6 +72,13 @@ def rollout(env, model, seed):
         steps += 1
         speed_sum += info["speed"]
         if terminated or truncated:
+            if env.render_mode == "human":
+                reason = "collision" if info["crashed"] else "terminated" if terminated else "time limit"
+                print(
+                    f"Episode seed={seed} finished: {reason}; "
+                    f"simulation_time={env.unwrapped.time:.1f}s, steps={steps}",
+                    flush=True,
+                )
             return {"seed": seed, "return": score, "steps": steps, "crashed": int(info["crashed"]),
                     "mean_speed_mps": speed_sum / steps, "lane_changes": lane_changes}
 
@@ -119,7 +128,7 @@ def main():
     testing.add_argument("--render", action="store_true")
     testing.add_argument("--csv", type=Path)
     if len(sys.argv) == 1:
-        print("Highway demo: keep-lane rule, one episode.", flush=True)
+        print("Highway demo: keep-lane rule, one episode at real-time speed (up to 30s).", flush=True)
         args = parser.parse_args(["evaluate", "--densities", "1.0", "--episodes", "1", "--render"])
     else:
         args = parser.parse_args()
