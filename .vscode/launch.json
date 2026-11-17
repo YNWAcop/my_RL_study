@@ -157,6 +157,15 @@
             "console": "integratedTerminal"
         },
         {
+            "name": "车间调度 · 六工序演示",
+            "type": "debugpy",
+            "request": "launch",
+            "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+            "module": "projects.job_shop.run",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "学习步骤 · 正式实验",
             "type": "debugpy",
             "request": "launch",

@@ -4,7 +4,15 @@
 
 本项目从本仓库的六工序练习扩展到不同排程实例。派工基线包括最短加工时间优先（SPT）和最长加工时间优先（LPT）。MaskablePPO 用固定维度的 MLP 和动作掩码学习派工，CP-SAT 按工序优先约束和机器互斥求解同一实例。
 
-在仓库根目录运行。Windows 上可将 `python` 换成 `.\.venv\Scripts\python.exe`。
+直接运行本目录的 `run.py`，或在 VS Code「运行和调试」中选择「车间调度 · 六工序演示」。默认使用 SPT、LPT 规则求解六工序示例，无需训练模型；每次在仓库的 `runs/job_shop/demo_时间戳/` 中生成新结果。终端显示结果目录，打开其中的 `spt_gantt.png`、`lpt_gantt.png` 查看甘特图。这是生成图表的程序，不会像高速公路项目那样弹出驾驶动画；计算完成后退出是正常行为。
+
+也可以在仓库根目录运行：
+
+```powershell
+.\.venv\Scripts\python.exe -m projects.job_shop.run
+```
+
+下面的训练和评估命令均在仓库根目录运行。Windows 上请使用仓库环境 `.\.venv\Scripts\python.exe` 替换 `python`，仅在缺少依赖时运行安装命令。指定 `--output` 时必须使用不存在的新目录。
 
 ```powershell
 python -m pip install -r projects/job_shop/requirements.txt

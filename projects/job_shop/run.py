@@ -1,8 +1,10 @@
 """Train MaskablePPO or benchmark dispatching rules on job-shop instances."""
 import argparse
 import csv
+from datetime import datetime
 import json
 from pathlib import Path
+import sys
 import time
 
 import matplotlib
@@ -10,7 +12,12 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-from .env import EXAMPLE, JobShop, random_instance, validate_schedule
+if __package__ in (None, ""):
+    # Support VS Code's Run Python File as well as python -m.
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from projects.job_shop.env import EXAMPLE, JobShop, random_instance, validate_schedule
+else:
+    from .env import EXAMPLE, JobShop, random_instance, validate_schedule
 
 
 def dispatch(instance, rule, model=None):
@@ -158,7 +165,10 @@ def evaluate(args):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        epilog="Run without arguments to generate example schedules and Gantt images.",
+    )
     commands = parser.add_subparsers(dest="command", required=True)
     training = commands.add_parser("train")
     training.add_argument("--steps", type=int, default=50_000)
@@ -176,7 +186,14 @@ def main():
         command.add_argument("--jobs", type=int, default=3)
         command.add_argument("--machines", type=int, default=2)
         command.add_argument("--output", type=Path, required=True)
-    args = parser.parse_args()
+    if len(sys.argv) == 1:
+        output = (Path(__file__).resolve().parents[2] / "runs" / "job_shop"
+                  / datetime.now().strftime("demo_%Y%m%d_%H%M%S_%f"))
+        print("Job-shop demo: SPT and LPT rules on the six-operation example.", flush=True)
+        print(f"Results and Gantt images: {output}", flush=True)
+        args = parser.parse_args(["evaluate", "--example", "--output", str(output)])
+    else:
+        args = parser.parse_args()
     if min(args.jobs, args.machines) < 1 or args.seed < 0:
         parser.error("jobs and machines must be positive, seed must be nonnegative")
     if args.command == "train":
